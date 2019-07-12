@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Dijkstra_s_Algorithm
 {
@@ -52,6 +49,14 @@ namespace Dijkstra_s_Algorithm
             }
         }
 
+        /// <summary>
+        /// Adds an edge to the graph. Requires a start and end vertex.
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <param name="cost"></param>
+        /// <param name="isUsed"></param>
+        /// <returns></returns>
         public Edge AddEdge(Vertex start, Vertex end, int cost, bool isUsed)
         {
             if (start == null || end == null)
@@ -64,6 +69,10 @@ namespace Dijkstra_s_Algorithm
             return edge;
         }
 
+        /// <summary>
+        /// Removes an edge from the graph.
+        /// </summary>
+        /// <param name="edge"></param>
         public void RemoveEdge(Edge edge)
         {
             if (Edges.Contains(edge))
