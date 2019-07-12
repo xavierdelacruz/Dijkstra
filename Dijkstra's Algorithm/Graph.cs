@@ -86,6 +86,16 @@ namespace Dijkstra_s_Algorithm
         }
 
         /// <summary>
+        /// Returns true if vertex is in graph.
+        /// </summary>
+        /// <param name="vertex"></param>
+        /// <returns></returns>
+        public bool HasVertex(Vertex vertex)
+        {
+            return Vertices.Contains(vertex);
+        }
+
+        /// <summary>
         /// Checks if an edge has a vertex at its START
         /// </summary>
         /// <param name="vertex"></param>

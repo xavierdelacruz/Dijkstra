@@ -24,7 +24,5 @@ namespace Dijkstra_s_Algorithm
 
             pathEdges = edges;
         }
-
-
     }
 }
