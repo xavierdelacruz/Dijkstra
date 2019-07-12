@@ -72,7 +72,7 @@ namespace Dijkstra_s_Algorithm
             }
             else
             {
-                throw new NullReferenceException("The edge specified cannot be found during removal.")
+                throw new NullReferenceException("The edge specified cannot be found during removal.");
             }
         }
 
