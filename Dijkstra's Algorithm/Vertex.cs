@@ -1,12 +1,18 @@
-﻿namespace Dijkstra_s_Algorithm
+﻿using System.Collections.Generic;
+
+namespace Dijkstra_s_Algorithm
 {
     public class Vertex
     {
-        internal int value { get; set; }
+        internal string Name { get; set; }
+        internal int Value { get; set; }       
+        internal List<Vertex> Edges { get; set; }
 
-        public Vertex(int? vertexValue)
+        public Vertex(string name, int? vertexValue)
         {
-            value = vertexValue ?? 0;
+            Name = name;
+            Value = vertexValue ?? 0;
+            Edges = new List<Vertex>();
         }
     }
 }

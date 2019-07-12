@@ -9,7 +9,7 @@ namespace Dijkstra_s_Algorithm
         {
         }
 
-        public Path SearchForShortestPath(Graph graph, Vertex start, Vertex end)
+        public List<Vertex> SearchForShortestPath(Graph graph, Vertex start, Vertex end)
         {
             if (graph == null)
             {
@@ -28,15 +28,19 @@ namespace Dijkstra_s_Algorithm
 
             // Following Pseudocode from here
             // http://www.gitta.info/Accessibiliti/en/html/Dijkstra_learningObject1.html
-
+            IDictionary<Vertex, List<Vertex>> previous = new Dictionary<Vertex, List<Vertex>>();
             IDictionary<Vertex, int> distance = new Dictionary<Vertex, int>();
-            IDictionary<Vertex, Edge> previousNode = new Dictionary<Vertex, Edge>();
-            IList<Vertex> graphVertices = new List<Vertex>();
+            List<Vertex> graphVertices = new List<Vertex>();
 
             foreach (var vertex in graph.Vertices)
             {
+                if (vertex == start)
+                {
+                    distance[vertex] = 0;
+                }
+
                 distance[vertex] = int.MaxValue;
-                previousNode[vertex] = null;
+                previous[vertex] = null;
                 graphVertices.Add(vertex);
             }
 
@@ -44,7 +48,18 @@ namespace Dijkstra_s_Algorithm
 
             while (graphVertices.Count > 0)
             {
+                graphVertices.Sort((a, b) => distance[a] - distance[b]);
 
+                if (start == end)
+                {
+                    graphVertices.Remove(start);
+                    List<Vertex> path = new List<Vertex>()
+                    {
+                        start
+                    };
+
+                    return path;
+                }
             }
             return null;
         }
