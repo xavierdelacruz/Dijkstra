@@ -4,9 +4,9 @@
     {
         internal int value { get; set; }
 
-        public Vertex(int vertexValue)
+        public Vertex(int? vertexValue)
         {
-            value = vertexValue;
+            value = vertexValue ?? 0;
         }
     }
 }
