@@ -4,7 +4,7 @@ namespace Dijkstra_s_Algorithm
 {
     public class Dijkstra
     {
-        public Dijkstra(Graph inputGraph)
+        public Dijkstra()
         {
         }
 
