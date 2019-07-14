@@ -6,9 +6,8 @@ namespace Dijkstra_s_Algorithm
     public class Graph
     {
         public List<Vertex> Vertices { get; set; }
-        public List<Edge> Edges { get; set; }
 
-        public Graph(IList<Vertex> vertices)
+        public Graph(List<Vertex> vertices)
         {
             if (vertices == null)
             {
@@ -21,9 +20,9 @@ namespace Dijkstra_s_Algorithm
         /// </summary>
         /// <param name="vertexValue"></param>
         /// <returns></returns>
-        public Vertex AddVertex(string name, int vertexValue)
+        public Vertex AddVertex(string name, int vertexValue, int? heuristic)
         {
-            var vertex = new Vertex(name, vertexValue);
+            var vertex = new Vertex(name, vertexValue, heuristic);
             Vertices.Add(vertex);
             return vertex;
         }

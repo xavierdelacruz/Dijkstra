@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using Wintellect.PowerCollections;
 
 namespace Dijkstra_s_Algorithm
 {
@@ -28,40 +30,47 @@ namespace Dijkstra_s_Algorithm
 
             // Following Pseudocode from here
             // http://www.gitta.info/Accessibiliti/en/html/Dijkstra_learningObject1.html
-            IDictionary<Vertex, List<Vertex>> previous = new Dictionary<Vertex, List<Vertex>>();
+            IDictionary<Vertex, Vertex> previous = new Dictionary<Vertex, Vertex>();
             IDictionary<Vertex, int> distance = new Dictionary<Vertex, int>();
-            List<Vertex> graphVertices = new List<Vertex>();
+            IList<Vertex> priorityQueue = new List<Vertex>();
 
             foreach (var vertex in graph.Vertices)
             {
-                if (vertex == start)
-                {
-                    distance[vertex] = 0;
-                }
-
                 distance[vertex] = int.MaxValue;
                 previous[vertex] = null;
-                graphVertices.Add(vertex);
+                priorityQueue.Add(vertex);
             }
 
             distance[start] = 0;
+            List<Vertex> path = new List<Vertex>();
 
-            while (graphVertices.Count > 0)
+            while (priorityQueue.Any())
             {
-                graphVertices.Sort((a, b) => distance[a] - distance[b]);
+                priorityQueue.OrderBy(x => distance[x] + x.Heuristic).ToList(); ;
+                var currentSmallestVertex = priorityQueue.First();
+                priorityQueue.Remove(currentSmallestVertex);
 
-                if (start == end)
-                {
-                    graphVertices.Remove(start);
-                    List<Vertex> path = new List<Vertex>()
+                if (currentSmallestVertex == end)
+                {                 
+                    foreach (var nodes in previous)
                     {
-                        start
-                    };
+                        path.Add(currentSmallestVertex);
+                    }
+                    break;
+                }
 
-                    return path;
+                foreach (var neighbour in currentSmallestVertex.Edges.OrderBy(x => x.Weight))
+                    //graph.Vertices.Find(x => x == currentSmallestVertex).Edges)
+                {
+                    var alt = distance[currentSmallestVertex] + neighbour.Weight + neighbour.Heuristic;
+                    if (alt < distance[neighbour])
+                    {
+                        distance[neighbour] = alt;
+                        previous[neighbour] = currentSmallestVertex;
+                    }
                 }
             }
-            return null;
+            return path;
         }
     }
 }
