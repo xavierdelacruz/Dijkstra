@@ -7,24 +7,37 @@ namespace Dijkstra_s_Algorithm
     {
         public List<Vertex> Vertices { get; set; }
 
-        public Graph(List<Vertex> vertices)
+        public Graph()
         {
-            if (vertices == null)
-            {
-                Vertices = new List<Vertex>();
-            }
+            Vertices = new List<Vertex>();
         }
 
         /// <summary>
         /// Basic operation on adding a new vertex
         /// </summary>
-        /// <param name="vertexValue"></param>
-        /// <returns></returns>
-        public Vertex AddVertex(string name, int vertexValue, int? heuristic)
+        /// <param name="vertex"></param>
+        public void AddVertex(Vertex vertex)
         {
-            var vertex = new Vertex(name, vertexValue, heuristic);
             Vertices.Add(vertex);
-            return vertex;
+        }
+
+        /// <summary>
+        /// Adds a whole list of vertices
+        /// </summary>
+        /// <param name="vertices"></param>
+        public void AddVertices(List<Vertex> vertices)
+        {
+            if (Vertices.Count > 0)
+            {
+                foreach (var vertex in vertices)
+                {
+                    Vertices.Add(vertex);
+                }
+            }
+            else
+            {
+                Vertices = vertices;
+            }
         }
 
         /// <summary>

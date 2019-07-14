@@ -4,17 +4,17 @@ namespace Dijkstra_s_Algorithm
 {
     public class Vertex
     {
-        internal string Name { get; set; }
-        internal int Weight { get; set; }       
-        internal List<Vertex> Edges { get; set; }
+        internal string Name { get; set; }      
+        internal List<Edge> Edges { get; set; }
         internal int Heuristic { get; set; }
+        internal bool IsGoal { get; set; }
 
-        public Vertex(string name, int? vertexWeight, int? heuristic)
+        public Vertex(string name, int? heuristic, List<Edge> edges, bool isGoal = false)
         {
             Name = name;
-            Weight = vertexWeight ?? 0;
-            Edges = new List<Vertex>();
+            Edges = edges ?? new List<Edge>();
             Heuristic = heuristic ?? 0;
+            IsGoal = isGoal;
         }
     }
 }

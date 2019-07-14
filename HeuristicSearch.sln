@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.438
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dijkstra's Algorithm", "Dijkstra's Algorithm\Dijkstra's Algorithm.csproj", "{0E564761-98B9-405A-A07B-3CAEFFC081ED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeuristicSearch", "Dijkstra's Algorithm\HeuristicSearch.csproj", "{0E564761-98B9-405A-A07B-3CAEFFC081ED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
