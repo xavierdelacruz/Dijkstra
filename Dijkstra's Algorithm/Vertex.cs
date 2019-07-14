@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace Dijkstra_s_Algorithm
 {
     public class Vertex
     {
-        internal string Name { get; set; }      
+        public string Name { get; set; }
         internal List<Edge> Edges { get; set; }
         internal int Heuristic { get; set; }
         internal bool IsGoal { get; set; }

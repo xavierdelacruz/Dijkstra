@@ -33,25 +33,10 @@ namespace Dijkstra_s_Algorithm
             var search = new DijkstrasAlgorithmWithHeuristics();
             var startVertex = vertexA;
             var results = search.SearchForShortestPath(graph, startVertex);
-            results.Reverse();
 
-            Console.WriteLine($"Shortest Path from {startVertex.Name} a goal:");
+            Console.WriteLine($"Shortest Path from {startVertex.Name} to a goal:");
             Console.Write(startVertex.Name);
             foreach (var vertex in results)
-            {
-                Console.Write(" -> " + vertex.Name);
-            }
-            Console.WriteLine();
-
-            var searchWithEnd = new DijkstrasAlgorithmWithHeuristics();
-            var startVertexWithEnd = vertexA;
-            var endVertex = vertexZ;
-            var resultsWithEnd = searchWithEnd.SearchForShortestPath(graph, startVertex);
-            resultsWithEnd.Reverse();
-
-            Console.WriteLine($"Shortest Path from {startVertexWithEnd.Name} to {endVertex.Name}:");
-            Console.Write(startVertexWithEnd.Name);
-            foreach (var vertex in resultsWithEnd)
             {
                 Console.Write(" -> " + vertex.Name);
             }
@@ -82,11 +67,10 @@ namespace Dijkstra_s_Algorithm
 
             var searchWithHeuristics = new DijkstrasAlgorithmWithHeuristics();
             var startVertexWithHeuristics = vertexAWithHeuristics;
-            var endVertexWithHeuristics = vertexZWithHeuristics;
-            var resultsWithHeuristics = searchWithHeuristics.SearchForShortestPath(graphWithHeuristics, startVertexWithHeuristics, endVertexWithHeuristics);
-            resultsWithHeuristics.Reverse();
+            var resultsWithHeuristics = searchWithHeuristics.SearchForShortestPath(graphWithHeuristics, startVertexWithHeuristics);
 
-            Console.WriteLine($"Shortest Path from {startVertexWithHeuristics.Name} to {endVertexWithHeuristics.Name} with Heuristics:");
+
+            Console.WriteLine($"Shortest Path from {startVertexWithHeuristics.Name} to a goal with Heuristics:");
             Console.Write(startVertexWithHeuristics.Name);
             foreach (var vertex in resultsWithHeuristics)
             {

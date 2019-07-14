@@ -12,12 +12,14 @@ namespace Dijkstra_s_Algorithm
 
         /// <summary>
         /// An implementation of Dijkstra's Algorithm and A* (when heuristics are considered)
+        /// PSEUDOCODE format followed to make this implementation:
+        /// http://www.gitta.info/Accessibiliti/en/html/Dijkstra_learningObject1.html
         /// </summary>
         /// <param name="graph"></param>
         /// <param name="start"></param>
-        /// <param name="end"></param>
+        /// <param name="end"> Can be null as long as a goal node is specified</param>
         /// <returns></returns>
-        public List<Vertex> SearchForShortestPath(Graph graph, Vertex start, Vertex end = null)
+        public List<Vertex> SearchForShortestPath(Graph graph, Vertex start)
         {
             if (graph == null)
             {
@@ -34,8 +36,6 @@ namespace Dijkstra_s_Algorithm
                 throw new ArgumentNullException("No start vertex has been found in the input graph.");
             }
 
-            // Following Pseudocode from here
-            // http://www.gitta.info/Accessibiliti/en/html/Dijkstra_learningObject1.html
             IDictionary<Vertex, Vertex> previous = new Dictionary<Vertex, Vertex>();
             IDictionary<Vertex, int> distance = new Dictionary<Vertex, int>();
             List<Vertex> priorityQueue = new List<Vertex>();
@@ -56,13 +56,14 @@ namespace Dijkstra_s_Algorithm
                 var currentSmallestVertex = priorityQueue.First();
                 priorityQueue.Remove(currentSmallestVertex);
 
-                if (currentSmallestVertex.IsGoal || (previous[currentSmallestVertex] != null && previous[currentSmallestVertex] == end))
+                if (currentSmallestVertex.IsGoal)
                 {                 
                     while(previous[currentSmallestVertex] != null)
                     {      
                         path.Add(currentSmallestVertex);
                         currentSmallestVertex = previous[currentSmallestVertex];
                     }
+                    path.Reverse();
                     return path;
                 }
             
@@ -76,6 +77,7 @@ namespace Dijkstra_s_Algorithm
                     }
                 }
             }
+            path.Reverse();
             return path;
         }
     }
