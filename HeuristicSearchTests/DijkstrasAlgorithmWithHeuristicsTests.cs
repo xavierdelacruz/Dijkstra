@@ -70,11 +70,42 @@ namespace Dijkstra_s_Algorithm.Tests
             return result;
         }
 
+        Tuple<Graph, Vertex> SingleVertexSetup()
+        {
+            var graph = new Graph();
+            var vertexA = new Vertex("A", 0, null);
+            graph.AddVertex(vertexA);
+
+            var result = new Tuple<Graph, Vertex>(graph, vertexA);
+            return result;
+        }
+
         [TestInitialize()]
         public void Setup()
         {
             graphWithoutHeuristics = NonHeuristicSetup();
             graphWithHeuristics = HeuristicSetup();
+            graphWithSingleVertex = SingleVertexSetup();
+        }
+
+        [TestMethod()]
+        public void TestWithSingleVertex()
+        {
+            var tuple = SingleVertexSetup();
+            var search = new DijkstrasAlgorithmWithHeuristics();
+            var results = search.SearchForShortestPath(tuple.Item1, tuple.Item2);
+            Assert.AreEqual(0, results.Count);
+        }
+
+        [TestMethod()]
+        [ExpectedException(typeof(ArgumentNullException), "No start vertex has been found in the input graph.")]
+        public void TestWithEmptyGraph()
+        {
+            var emptyGraph = new Graph();
+            var search = new DijkstrasAlgorithmWithHeuristics();
+            var someStartVertex = new Vertex("Z", 0, null, true);
+            var results = search.SearchForShortestPath(emptyGraph, someStartVertex);
+            Assert.AreEqual(1, results.Count);
         }
 
         [TestMethod()]
