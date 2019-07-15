@@ -14,6 +14,8 @@ namespace Dijkstra_s_Algorithm
         /// An implementation of Dijkstra's Algorithm and A* (when heuristics are considered)
         /// PSEUDOCODE format followed to make this implementation:
         /// http://www.gitta.info/Accessibiliti/en/html/Dijkstra_learningObject1.html
+        /// AND
+        /// https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
         /// </summary>
         /// <param name="graph"></param>
         /// <param name="start"></param>
