@@ -49,7 +49,7 @@ namespace Dijkstra_s_Algorithm
 
             distance[start] = 0;
             List<Vertex> path = new List<Vertex>();
-
+                 
             while (priorityQueue.Any())
             {
                 priorityQueue.OrderBy(x => distance[x] + x.Heuristic).ToList();
@@ -73,10 +73,11 @@ namespace Dijkstra_s_Algorithm
                     if (alt < distance[neighbour.destinationVertex])
                     {
                         distance[neighbour.destinationVertex] = alt;
-                        previous[neighbour.destinationVertex] = currentSmallestVertex;
+                        previous[neighbour.destinationVertex] = currentSmallestVertex;                      
                     }
                 }
             }
+
             path.Reverse();
             return path;
         }
