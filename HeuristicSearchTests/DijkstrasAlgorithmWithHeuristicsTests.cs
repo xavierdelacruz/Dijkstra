@@ -11,6 +11,7 @@ namespace Dijkstra_s_Algorithm.Tests
         Tuple<Graph, Vertex> graphWithHeuristics;
         Tuple<Graph, Vertex> graphWithoutHeuristics;
         Tuple<Graph, Vertex> graphWithSingleVertex;
+        Tuple<Graph, Vertex> graphWithNoGoalNodeSpecified;
 
         Tuple<Graph, Vertex> NonHeuristicSetup()
         {
@@ -80,18 +81,48 @@ namespace Dijkstra_s_Algorithm.Tests
             return result;
         }
 
+        Tuple<Graph, Vertex> NoGoalNodeSetup()
+        {
+            var graph = new Graph();
+            var vertexZ = new Vertex("Z", 0, null);
+            var vertexI = new Vertex("I", 0, new List<Edge> { new Edge(12, vertexZ) });
+            var vertexH = new Vertex("H", 0, new List<Edge> { new Edge(10, vertexI) });
+            var vertexG = new Vertex("G", 0, new List<Edge> { new Edge(9, vertexH), new Edge(13, vertexI), new Edge(7, vertexZ) });
+            var vertexF = new Vertex("F", 0, new List<Edge> { new Edge(7, vertexG) });
+            var vertexE = new Vertex("E", 0, new List<Edge> { new Edge(7, vertexF), new Edge(7, vertexG) });
+            var vertexD = new Vertex("D", 0, new List<Edge> { new Edge(4, vertexE) });
+            var vertexC = new Vertex("C", 0, new List<Edge> { new Edge(4, vertexD), new Edge(11, vertexF) });
+            var vertexB = new Vertex("B", 0, new List<Edge> { new Edge(6, vertexC) });
+            var vertexA = new Vertex("A", 0, new List<Edge> { new Edge(4, vertexE), new Edge(5, vertexB) });
+
+            graph.AddVertex(vertexA);
+            graph.AddVertex(vertexB);
+            graph.AddVertex(vertexC);
+            graph.AddVertex(vertexD);
+            graph.AddVertex(vertexE);
+            graph.AddVertex(vertexF);
+            graph.AddVertex(vertexG);
+            graph.AddVertex(vertexH);
+            graph.AddVertex(vertexI);
+            graph.AddVertex(vertexZ);
+
+            var result = new Tuple<Graph, Vertex>(graph, vertexA);
+            return result;
+        }
+
         [TestInitialize()]
         public void Setup()
         {
             graphWithoutHeuristics = NonHeuristicSetup();
             graphWithHeuristics = HeuristicSetup();
             graphWithSingleVertex = SingleVertexSetup();
+            graphWithNoGoalNodeSpecified = NoGoalNodeSetup();
         }
 
         [TestMethod()]
         public void TestWithSingleVertex()
         {
-            var tuple = SingleVertexSetup();
+            var tuple = graphWithSingleVertex;
             var search = new DijkstrasAlgorithmWithHeuristics();
             var results = search.SearchForShortestPath(tuple.Item1, tuple.Item2);
             Assert.AreEqual(0, results.Count);
@@ -106,6 +137,15 @@ namespace Dijkstra_s_Algorithm.Tests
             var someStartVertex = new Vertex("Z", 0, null, true);
             var results = search.SearchForShortestPath(emptyGraph, someStartVertex);
             Assert.AreEqual(1, results.Count);
+        }
+
+        [TestMethod()]
+        public void TestNoGoalNode()
+        {
+            var tuple = graphWithNoGoalNodeSpecified;
+            var search = new DijkstrasAlgorithmWithHeuristics();
+            var results = search.SearchForShortestPath(tuple.Item1, tuple.Item2);
+            Assert.AreEqual(0, results.Count);
         }
 
         [TestMethod()]
