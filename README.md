@@ -8,3 +8,6 @@ To showcase this, I implemented Dijktra's Algorithm to take into account heurist
 
 - Another visual confirmation of the implementation's correctness can be referenced to the Search Applet in AISPACE. The user
 can download this applet and create Graphs that correspond to the one being used in the C# program (or any graph that a user wants to create).
+
+- Future plans include changing the way this 'queue' is used. Currently it's using List. The issue is, there is no priority queue in .NET.
+A heap implementation may be better, or SortedList. This implementation was based on my own current experience - and is used as a learning tool via discovery and experimentation!
