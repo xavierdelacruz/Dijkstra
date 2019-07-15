@@ -119,6 +119,9 @@ namespace Dijkstra_s_Algorithm.Tests
             graphWithNoGoalNodeSpecified = NoGoalNodeSetup();
         }
 
+        /// <summary>
+        /// Test with a single vertex only. No Goal specified.
+        /// </summary>
         [TestMethod()]
         public void TestWithSingleVertex()
         {
@@ -128,6 +131,9 @@ namespace Dijkstra_s_Algorithm.Tests
             Assert.AreEqual(0, results.Count);
         }
 
+        /// <summary>
+        /// Test an empty graph
+        /// </summary>
         [TestMethod()]
         [ExpectedException(typeof(ArgumentNullException), "No start vertex has been found in the input graph.")]
         public void TestWithEmptyGraph()
@@ -139,6 +145,9 @@ namespace Dijkstra_s_Algorithm.Tests
             Assert.AreEqual(1, results.Count);
         }
 
+        /// <summary>
+        /// Test a graph with no goal node specified.
+        /// </summary>
         [TestMethod()]
         public void TestNoGoalNode()
         {
@@ -148,6 +157,9 @@ namespace Dijkstra_s_Algorithm.Tests
             Assert.AreEqual(0, results.Count);
         }
 
+        /// <summary>
+        /// Test the search using a graph without heuristics
+        /// </summary>
         [TestMethod()]
         public void TestWithoutHeuristics()
         {
@@ -157,6 +169,9 @@ namespace Dijkstra_s_Algorithm.Tests
             Assert.AreEqual(3, results.Count);
         }
 
+        /// <summary>
+        /// Test the search using a graph with heuristics
+        /// </summary>
         [TestMethod()]
         public void TestWithHeuristics()
         {
@@ -166,6 +181,9 @@ namespace Dijkstra_s_Algorithm.Tests
             Assert.AreEqual(5, results.Count);
         }
 
+        /// <summary>
+        /// Test to check the order of the returned path, from the first node opened after the start node, without heuristics
+        /// </summary>
         [TestMethod()]
         public void CheckOrderWithoutHeuristicTest()
         {
@@ -179,6 +197,9 @@ namespace Dijkstra_s_Algorithm.Tests
             Assert.AreEqual("Z", results[2].Name);
         }
 
+        /// <summary>
+        /// Test to check the order of the returned path, from the first node opened after the start node, with heuristics
+        /// </summary>
         [TestMethod()]
         public void CheckOrderWithHeuristicTest()
         {
@@ -194,6 +215,9 @@ namespace Dijkstra_s_Algorithm.Tests
             Assert.AreEqual("Z", results[4].Name);
         }
 
+        /// <summary>
+        /// Test to see if a null start node is given.
+        /// </summary>
         [TestMethod()]
         [ExpectedException(typeof(ArgumentNullException), "Specified start or end vertices are null.")]
         public void NullStartNodeNonHeuristicGraph()
@@ -204,6 +228,9 @@ namespace Dijkstra_s_Algorithm.Tests
             var results = search.SearchForShortestPath(tupleWithoutHeuristics.Item1, null);
         }
 
+        /// <summary>
+        /// Equivalent test, but to a graph with heuristics.
+        /// </summary>
         [TestMethod()]
         [ExpectedException(typeof(ArgumentNullException), "Specified start or end vertices are null.")]
         public void NullStartNodeHeuristicGraph()
@@ -213,6 +240,9 @@ namespace Dijkstra_s_Algorithm.Tests
             var results = search.SearchForShortestPath(tupleWithHeuristics.Item1, null);
         }
 
+        /// <summary>
+        /// Test to check if a bad vertex (not included in the graph is added) in the non heuristic graph.
+        /// </summary>
         [TestMethod()]
         [ExpectedException(typeof(ArgumentNullException), "No start vertex has been found in the input graph.")]
         public void WrongStartVertexNonHeuristicGraph()
@@ -225,6 +255,9 @@ namespace Dijkstra_s_Algorithm.Tests
             var results = search.SearchForShortestPath(tupleWithoutHeuristics.Item1, badVertex);
         }
 
+        /// <summary>
+        /// Test to check if a bad vertex (not included in the graph is added) in the heuristic graph.
+        /// </summary>
         [TestMethod()]
         [ExpectedException(typeof(ArgumentNullException), "No start vertex has been found in the input graph.")]
         public void WrongStartVertexHeuristicGraph()
