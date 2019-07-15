@@ -1,4 +1,4 @@
-# Dijkstra-and-A-Star
+# Dijkstra and A* Search
 A C# Implementation of Dijkstra's Algorithm and A*
 
 This project may expand into other Algorithms. However, I wanted to show how Dijkstra may perform like A* without any heuristics.
