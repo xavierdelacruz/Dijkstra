@@ -10,7 +10,7 @@ namespace Dijkstra_s_Algorithm.Tests
     {
         Tuple<Graph, Vertex> graphWithHeuristics;
         Tuple<Graph, Vertex> graphWithoutHeuristics;
-        Tuple<Graph, Vertex> graphWithCycle;
+        Tuple<Graph, Vertex> graphWithSingleVertex;
 
         Tuple<Graph, Vertex> NonHeuristicSetup()
         {
@@ -78,7 +78,7 @@ namespace Dijkstra_s_Algorithm.Tests
         }
 
         [TestMethod()]
-        public void BasicTestWithoutHeuristics()
+        public void TestWithoutHeuristics()
         {
             var tuple = graphWithoutHeuristics;
             var search = new DijkstrasAlgorithmWithHeuristics();
@@ -87,30 +87,12 @@ namespace Dijkstra_s_Algorithm.Tests
         }
 
         [TestMethod()]
-        public void BasicTestWithHeuristics()
+        public void TestWithHeuristics()
         {
             var tuple = graphWithHeuristics;
             var search = new DijkstrasAlgorithmWithHeuristics();
             var results = search.SearchForShortestPath(tuple.Item1, tuple.Item2);
             Assert.AreEqual(5, results.Count);
-        }
-
-        [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException), "Input graph is null.")]
-        public void TestNonHeuristicGraph()
-        {
-            var tupleWithoutHeuristics = graphWithoutHeuristics;
-            var search = new DijkstrasAlgorithmWithHeuristics();
-            var results = search.SearchForShortestPath(null, tupleWithoutHeuristics.Item2);        
-        }
-
-        [TestMethod()]
-        [ExpectedException(typeof(ArgumentNullException), "Input graph is null.")]
-        public void TestHeuristicGraph()
-        {
-            var tupleWithHeuristics = graphWithHeuristics;
-            var search = new DijkstrasAlgorithmWithHeuristics();
-            var results = search.SearchForShortestPath(null, tupleWithHeuristics.Item2);
         }
 
         [TestMethod()]
