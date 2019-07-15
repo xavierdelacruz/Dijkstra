@@ -1,5 +1,5 @@
 # Dijkstra and A* Search
-A C# Implementation of Dijkstra's Algorithm and A*
+C# Implementation of Dijkstra's Algorithm and A* in one method!
 
 This project may expand into other Algorithms. However, I wanted to show how Dijkstra may perform like A* without any heuristics.
 To showcase this, I implemented Dijktra's Algorithm to take into account heuristics. By default, we set h(n) = 0.
