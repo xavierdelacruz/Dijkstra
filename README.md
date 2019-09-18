@@ -1,4 +1,4 @@
-# Dijkstra and A* Search
+# Dijkstra and A* Search - WIP for a possible search tool (ie. Maze solver, or Path search in map software)
 C# Implementation of Dijkstra's Algorithm and A* in one method!
 
 This project may expand into other Algorithms. However, I wanted to show how Dijkstra may perform like A* without any heuristics.
